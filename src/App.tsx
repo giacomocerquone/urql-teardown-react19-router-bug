@@ -7,7 +7,7 @@ import {
   Provider,
   useQuery,
 } from "urql";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Link, Route, Routes } from "react-router";
 
 const query = gql`
   query GetUser($userId: String!) {
