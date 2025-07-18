@@ -1,13 +1,11 @@
 import "./App.css";
+import { BrowserRouter, Link, Route, Routes } from "react-router";
+import request, { gql } from "graphql-request";
 import {
-  cacheExchange,
-  Client,
-  fetchExchange,
-  gql,
-  Provider,
+  QueryClient,
+  QueryClientProvider,
   useQuery,
-} from "urql";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+} from "@tanstack/react-query";
 
 const query = gql`
   query GetUser($userId: String!) {
@@ -17,8 +15,29 @@ const query = gql`
   }
 `;
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      networkMode: "always",
+    },
+  },
+});
+
+const useOffer = () => {
+  return useQuery({
+    queryKey: ["films2"],
+    queryFn: async () =>
+      request(
+        "https://api.spacex.land/graphql",
+        query,
+        // variables are type-checked too!
+        { userId: "123" }
+      ),
+  });
+};
+
 const Path1 = () => {
-  const [{ data }] = useQuery({ query, variables: { userId: "123" } });
+  const { data } = useOffer();
 
   console.log(data);
 
@@ -32,7 +51,7 @@ const Path1 = () => {
 };
 
 const Path2 = () => {
-  const [{ data }] = useQuery({ query, variables: { userId: "123" } });
+  const { data } = useOffer();
 
   console.log(data);
 
@@ -44,25 +63,16 @@ const Path2 = () => {
   );
 };
 
-const client = new Client({
-  url: "/graphql",
-  exchanges: [cacheExchange, fetchExchange],
-  fetchOptions: {
-    credentials: "include",
-  },
-  requestPolicy: "network-only",
-});
-
 function App() {
   return (
-    <Provider value={client}>
+    <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Path1 />} />
           <Route path="/path2/:id" element={<Path2 />} />
         </Routes>
       </BrowserRouter>
-    </Provider>
+    </QueryClientProvider>
   );
 }
 
