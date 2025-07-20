@@ -3,10 +3,8 @@
 This repo showcases a problem when using urql (network-only requestPolicy) in combination of the packages listed above on those indicated versions.<br/>
 This is a simple SPA application with no server whatsoever. So react-router is in [declarative mode](https://reactrouter.com/start/declarative/routing)<br/>
 
-When declaring a `useQuery` in a page, then navigates to another using `useQuery`, the second requests shows a teardown and cancelation first and then a third real request which is then working.<br/>
+When using `useQuery` in a page, then navigates to another page using `useQuery` with the same shared query, the second page shows a teardown and cancelation on the first request and then a second request is run and returns just fine.<br/>
 Look at the screencast:
-
-
 
 https://github.com/user-attachments/assets/6fc2c5c6-2424-446a-9af6-cca0ce460c63
 
