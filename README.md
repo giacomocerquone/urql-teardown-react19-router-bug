@@ -6,3 +6,7 @@ This is a simple SPA application with no server whatsoever. So react-router is i
 When declaring a `useQuery` in a page, then navigates to another using `useQuery`, the second requests shows a teardown and cancelation first and then a third real request which is then working.<br/>
 Look at the screencast:
 
+
+
+https://github.com/user-attachments/assets/6fc2c5c6-2424-446a-9af6-cca0ce460c63
+
