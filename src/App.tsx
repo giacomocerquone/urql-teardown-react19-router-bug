@@ -11,8 +11,9 @@ import { BrowserRouter, Link, Route, Routes } from "react-router";
 import { devtoolsExchange } from "@urql/devtools";
 
 const query = gql`
-  query GetUser($userId: String!) {
-    user(id: $userId) {
+  query Pokemons {
+    pokemons(limit: 10) {
+      id
       name
     }
   }
@@ -46,11 +47,8 @@ const Path2 = () => {
 };
 
 const client = new Client({
-  url: "/graphql",
+  url: "https://trygql.formidable.dev/graphql/basic-pokedex",
   exchanges: [devtoolsExchange, cacheExchange, fetchExchange],
-  fetchOptions: {
-    credentials: "include",
-  },
   requestPolicy: "network-only",
 });
 
