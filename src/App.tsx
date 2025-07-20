@@ -8,6 +8,7 @@ import {
   useQuery,
 } from "urql";
 import { BrowserRouter, Link, Route, Routes } from "react-router";
+import { devtoolsExchange } from "@urql/devtools";
 
 const query = gql`
   query GetUser($userId: String!) {
@@ -46,7 +47,7 @@ const Path2 = () => {
 
 const client = new Client({
   url: "/graphql",
-  exchanges: [cacheExchange, fetchExchange],
+  exchanges: [devtoolsExchange, cacheExchange, fetchExchange],
   fetchOptions: {
     credentials: "include",
   },

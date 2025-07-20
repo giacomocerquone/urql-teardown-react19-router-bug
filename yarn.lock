@@ -809,6 +809,13 @@
     "@0no-co/graphql.web" "^1.0.13"
     wonka "^6.3.2"
 
+"@urql/devtools@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@urql/devtools/-/devtools-2.0.3.tgz#780998c37386c72af9402a8f88c1b388e62f28cd"
+  integrity sha512-TktPLiBS9LcBPHD6qcnb8wqOVcg3Bx0iCtvQ80uPpfofwwBGJmqnQTjUdEFU6kwaLOFZULQ9+Uo4831G823mQw==
+  dependencies:
+    wonka ">= 4.0.9"
+
 "@vitejs/plugin-react@^4.6.0":
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/@vitejs/plugin-react/-/plugin-react-4.7.0.tgz#647af4e7bb75ad3add578e762ad984b90f4a24b9"
@@ -1871,7 +1878,7 @@ which@^2.0.1:
   dependencies:
     isexe "^2.0.0"
 
-wonka@^6.3.2:
+"wonka@>= 4.0.9", wonka@^6.3.2:
   version "6.3.5"
   resolved "https://registry.yarnpkg.com/wonka/-/wonka-6.3.5.tgz#33fa54ea700ff3e87b56fe32202112a9e8fea1a2"
   integrity sha512-SSil+ecw6B4/Dm7Pf2sAshKQ5hWFvfyGlfPbEd6A14dOH6VDjrmbY86u6nZvy9omGwwIPFR8V41+of1EezgoUw==
